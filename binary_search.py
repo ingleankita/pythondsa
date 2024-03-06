@@ -65,8 +65,8 @@ def find_card(cards, query):
 # Run tests.
 
 def evaluate_tests(testcases, function):
-    start_time = time.time() # Get start time
     for test in testcases: # Print information
+        start_time = time.time()  # Get start time
         print(f"Input:\n{test['input']}")
         print(f"Expected output:\n{test['output']}")
         print(f"Actual output:\n{function(**test['input'])}")
