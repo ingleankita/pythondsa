@@ -1,6 +1,7 @@
 """Question: Alice has some cards with numbers written on them. She arranges the cards in decreasing order,
 and lays them out face down in a sequence on a table. She challenges Bob to pick out the card containing a given
 number by turning over as few cards as possible. Write a function to help Bob locate the card."""
+import time
 
 # Problem: Find the card with query with the least possible turning over of cards.
 
@@ -64,7 +65,8 @@ def find_card(cards, query):
 # Run tests.
 
 def evaluate_tests(testcases, function):
-    for test in testcases:
+    start_time = time.time() # Get start time
+    for test in testcases: # Print information
         print(f"Input:\n{test['input']}")
         print(f"Expected output:\n{test['output']}")
         print(f"Actual output:\n{function(**test['input'])}")
@@ -72,7 +74,10 @@ def evaluate_tests(testcases, function):
             print("\033[92m" + "Test passed :)" + "\033[0m")
         else:
             print("\033[91m" + "Test failed :(" + "\033[0m")
-        print()
+        end_time = time.time() # Get end time
+        elapsed_time_seconds = end_time - start_time # Get elapsed time in seconds
+        elapsed_time_ms = elapsed_time_seconds * 1000 # Convert elapsed time to ms
+        print(f"Execution time: {elapsed_time_ms:.2f} milliseconds\n")
 
 
 
