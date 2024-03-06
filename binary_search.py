@@ -1,6 +1,7 @@
 """Question: Alice has some cards with numbers written on them. She arranges the cards in decreasing order,
 and lays them out face down in a sequence on a table. She challenges Bob to pick out the card containing a given
 number by turning over as few cards as possible. Write a function to help Bob locate the card."""
+
 import time
 
 # Problem: Find the card with query with the least possible turning over of cards.
@@ -55,6 +56,8 @@ tests.append({
 
 
 # Brute force implementation: iterate over all cards to find the card with the query
+# Time complexity: O(n); n = number of cards
+# Space complexity: O(1); index and card are re-used every iteration of the loop
 def find_card(cards, query):
     for index, card in enumerate(cards):  # enumerate returns an iterable object that yields index, value pairs
         if card == query:
@@ -65,8 +68,9 @@ def find_card(cards, query):
 # Run tests.
 
 def evaluate_tests(testcases, function):
-    for test in testcases: # Print information
+    for test_case_number, test in enumerate(testcases):  # Print information
         start_time = time.time()  # Get start time
+        print(f"\033[1mTest case {test_case_number+1}\033[0m")
         print(f"Input:\n{test['input']}")
         print(f"Expected output:\n{test['output']}")
         print(f"Actual output:\n{function(**test['input'])}")
@@ -74,11 +78,10 @@ def evaluate_tests(testcases, function):
             print("\033[92m" + "Test passed :)" + "\033[0m")
         else:
             print("\033[91m" + "Test failed :(" + "\033[0m")
-        end_time = time.time() # Get end time
-        elapsed_time_seconds = end_time - start_time # Get elapsed time in seconds
-        elapsed_time_ms = elapsed_time_seconds * 1000 # Convert elapsed time to ms
+        end_time = time.time()  # Get end time
+        elapsed_time_seconds = end_time - start_time  # Get elapsed time in seconds
+        elapsed_time_ms = elapsed_time_seconds * 1000  # Convert elapsed time to ms
         print(f"Execution time: {elapsed_time_ms:.2f} milliseconds\n")
-
 
 
 evaluate_tests(tests, find_card)
