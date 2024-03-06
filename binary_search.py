@@ -55,12 +55,25 @@ tests.append({
 
 # Brute force implementation: iterate over all cards to find the card with the query
 def find_card(cards, query):
-    for index, card in enumerate(cards):
+    for index, card in enumerate(cards):  # enumerate returns an iterable object that yields index, value pairs
         if card == query:
             return index
     return -1
 
 
 # Run tests.
-for test in tests:
-    print(find_card(**test['input']) == test['output'])
+
+def evaluate_tests(testcases, function):
+    for test in testcases:
+        print(f"Input:\n{test['input']}")
+        print(f"Expected output:\n{test['output']}")
+        print(f"Actual output:\n{function(**test['input'])}")
+        if function(**test['input']) == test['output']:
+            print("\033[92m" + "Test passed :)" + "\033[0m")
+        else:
+            print("\033[91m" + "Test failed :(" + "\033[0m")
+        print()
+
+
+
+evaluate_tests(tests, find_card)
