@@ -55,14 +55,33 @@ tests.append({
 })
 
 
-# Brute force implementation: iterate over all cards to find the card with the query
+# Brute force implementation: Linear search (iterate over all cards to find the card with the query)
 # Time complexity: O(n); n = number of cards
 # Space complexity: O(1); index and card are re-used every iteration of the loop
-def find_card(cards, query):
+def find_card_linear_search(cards, query):
     for index, card in enumerate(cards):  # enumerate returns an iterable object that yields index, value pairs
         if card == query:
             return index
     return -1
+
+
+def find_card_binary_search(cards, query):
+    return binary_search(cards, query, 0, len(cards) - 1)
+
+
+# Binary search
+def binary_search(cards, query, start, end):
+    mid = (end + start) // 2  # Get mid (average) value between start and end
+
+    if start > end:  # If query does not exist in cards
+        return -1
+
+    if cards[mid] == query:  # If query found
+        return mid
+    elif cards[mid] < query:  # If mid value is smaller than query, check left of mid value
+        return binary_search(cards, query, start, mid - 1)
+    elif cards[mid] > query:  # If mid value is greater than query, check right of mid value
+        return binary_search(cards, query, mid + 1, end)
 
 
 # Run tests.
@@ -70,7 +89,7 @@ def find_card(cards, query):
 def evaluate_tests(testcases, function):
     for test_case_number, test in enumerate(testcases):  # Print information
         start_time = time.time()  # Get start time
-        print(f"\033[1mTest case {test_case_number+1}\033[0m")
+        print(f"\033[1mTest case {test_case_number + 1}\033[0m")
         print(f"Input:\n{test['input']}")
         print(f"Expected output:\n{test['output']}")
         print(f"Actual output:\n{function(**test['input'])}")
@@ -84,4 +103,5 @@ def evaluate_tests(testcases, function):
         print(f"Execution time: {elapsed_time_ms:.2f} milliseconds\n")
 
 
-evaluate_tests(tests, find_card)
+evaluate_tests(tests, find_card_linear_search)
+evaluate_tests(tests, find_card_binary_search)
