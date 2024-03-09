@@ -32,12 +32,31 @@ class LinkedList:
             current = current.next
         print(None)
 
+    def length(self):  # Get length of list.
+        length = 0
+        current = self.head
+        while current is not None:
+            length += 1
+            current = current.next
+        return length
+
+    def get_position(self, query):  # Get the first occurrence of a value.
+        index = 0
+        current = self.head
+        while current is not None:
+            if current.value == query:
+                return index
+            current = current.next
+            index += 1
+        return -1
+
 
 linkedlist = LinkedList()
-linkedlist.append(2)
-linkedlist.append(1)
-linkedlist.append(6)
-linkedlist.append(9)
-linkedlist.append(3)
-linkedlist.append(8)
+linkedlist.append(21)
+linkedlist.append(15)
+linkedlist.append(31)
+linkedlist.append(16)
+linkedlist.append(23)
+linkedlist.append(13)
 linkedlist.print_list()
+print(linkedlist.get_position(16))
