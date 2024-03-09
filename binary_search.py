@@ -86,6 +86,9 @@ def binary_search(cards, query, start, end):
         return binary_search(cards, query, mid + 1, end)
 
 
+# TODO Question: Given an array of integers nums sorted in ascending order, find the starting and ending position of a given number.
+
+
 # Run tests.
 
 def evaluate_tests(testcases, function):
