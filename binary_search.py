@@ -70,6 +70,8 @@ def find_card_binary_search(cards, query):
 
 
 # Binary search
+# Time complexity: O(log n) for both recursive and iterative implementation; with each comparison the  search space is halved
+# Space complexity: O(log n); with each recursive call size of cards array is halved
 def binary_search(cards, query, start, end):
     mid = (end + start) // 2  # Get mid (average) value between start and end
 
