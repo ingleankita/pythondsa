@@ -60,13 +60,31 @@ class LinkedList:
             index += 1
         return -1
 
+    def reverse_list(self):
+        # if list is empty
+        if self.head is None:
+            return
+
+        current = self.head
+        prev = None
+
+        while current is not None:
+            next = current.next  # save next node in temporary variable to keep track of rest of the list
+            current.next = prev  # reverse the next pointer of current node
+
+            prev = current  # move prev to current node for next iteration of loop
+            current = next  # move the current pointer to the next node for next iteration of loop
+
+        self.head = prev
+
 
 linkedlist = LinkedList()
-linkedlist.append(21)
-linkedlist.append(15)
-linkedlist.append(31)
-linkedlist.append(16)
-linkedlist.append(23)
-linkedlist.append(13)
+linkedlist.append(1)
+linkedlist.append(2)
+linkedlist.append(3)
+linkedlist.append(4)
+linkedlist.append(5)
+linkedlist.append(6)
 linkedlist.print_list()
-print(linkedlist.get_position(16))
+linkedlist.reverse_list()
+linkedlist.print_list()
