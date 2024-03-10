@@ -6,6 +6,7 @@ performed efficiently:
 - Update the profile information of a user, given their username.
 - List all the users of the platform, sorted by username.
 You can assume that usernames are unique."""
+from datetime import time
 
 from linked_list import LinkedList
 
@@ -23,6 +24,16 @@ class User:
         return "User(username='{}', name='{}', email='{}')".format(self.username, self.name, self.email)
 
 
+"""
+Binary Search Trees:
+- The height k of a binary search tree is the number of levels in the tree starting from level 0 (root).
+- At any level k', # of nodes n = n^(k').
+- At the leaf level (k-1), # of nodes, n = 2^(k-1).
+- To store a total of N nodes (records) we need a balanced search tree of height at least [log(N) + 1].
+"""
+
+
+# Solve the question using Linked List
 class UserDatabaseLinkedList:
     def __init__(self):
         self.users = LinkedList()
