@@ -78,13 +78,13 @@ class LinkedList:
         self.head = prev
 
 
-linkedlist = LinkedList()
-linkedlist.append(1)
-linkedlist.append(2)
-linkedlist.append(3)
-linkedlist.append(4)
-linkedlist.append(5)
-linkedlist.append(6)
-linkedlist.print_list()
-linkedlist.reverse_list()
-linkedlist.print_list()
+# linkedlist = LinkedList()
+# linkedlist.append(1)
+# linkedlist.append(2)
+# linkedlist.append(3)
+# linkedlist.append(4)
+# linkedlist.append(5)
+# linkedlist.append(6)
+# linkedlist.print_list()
+# linkedlist.reverse_list()
+# linkedlist.print_list()
