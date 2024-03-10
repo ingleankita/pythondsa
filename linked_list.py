@@ -13,9 +13,13 @@ class Node:
 
 
 class LinkedList:
+    # Time complexity: O(1); single "head" pointer initialized
+    # Space complexity: O(1); constant space for single "head" pointer
     def __init__(self):
         self.head = None
 
+    # Time complexity: O(n); need to traverse entire list to append element at the tail
+    # Space complexity: O(1); constant amount of additional space, for single "current" pointer
     def append(self, value):  # Add new node to the list.
         if self.head is None:
             self.head = Node(value)
@@ -25,6 +29,8 @@ class LinkedList:
                 current = current.next
             current.next = Node(value)
 
+    # Time complexity: O(n); need to traverse entire list to print each value
+    # Space complexity: O(1); constant amount of additional space, for single "current" pointer
     def print_list(self):  # Print the list.
         current = self.head
         while current is not None:
@@ -32,6 +38,8 @@ class LinkedList:
             current = current.next
         print(None)
 
+    # Time complexity: O(n); need to traverse entire list to count elements
+    # Space complexity: O(1); constant number of pointers assigned
     def length(self):  # Get length of list.
         length = 0
         current = self.head
@@ -40,6 +48,8 @@ class LinkedList:
             current = current.next
         return length
 
+    # Time complexity: O(n); need to traverse entire list in worst case to get the queried value's index
+    # Space complexity: O(1); constant number of pointers assigned
     def get_position(self, query):  # Get the first occurrence of a value.
         index = 0
         current = self.head
