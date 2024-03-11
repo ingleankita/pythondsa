@@ -4,6 +4,10 @@
 - At the leaf level (k-1), # of nodes, n = 2^(k-1).
 - To store a total of N nodes (records) we need a balanced search tree of height at least [log(N) + 1]."""
 
+"""Inorder (L-C-R): Visit the left subtree, then the current node, and finally the right subtree.
+Preorder (C-L-R): Visit the current node, then the left subtree, and finally the right subtree.
+Postorder (L-R-C): Visit the left subtree, then the right subtree, and finally the current node."""
+
 
 # TODO: Implement a binary tree using Python.
 class TreeNode:
@@ -39,12 +43,10 @@ def print_tree(root, level=0, prefix="Root: "):
 3. Traverse right subtree recursively inorder."""
 
 
-def traverse_in_order(node):  # inorder traversal to list
+def inorder_traversal(node):  # inorder traversal to list
     if node is None:
         return []
-    return (traverse_in_order(node.left) +
-            [node.value] +
-            traverse_in_order(node.right))
+    return inorder_traversal(node.left) + [node.value] + inorder_traversal(node.right)
 
 
 def traverse_in_order_and_print(node):
@@ -62,7 +64,24 @@ def traverse_in_order_and_print(node):
 2. Traverse the left subtree recursively preorder.
 3. Traverse the right subtree recursively preorder."""
 
+
+def preorder_traversal(node):
+    if node is None:
+        return []
+    return [node.value] + preorder_traversal(node.left) + preorder_traversal(node.right)
+
+
 # TODO: Write a function to perform the postorder traversal of a binary tree.
+"""Postorder traversal:
+1. Traverse the left subtree recursively postorder.
+2. Traverse the right subtree recursively postorder.
+3. Traverse the current node."""
+
+
+def postorder_traversal(node):
+    if node is None:
+        return []
+    return postorder_traversal(node.left) + postorder_traversal(node.right) + [node.value]
 
 
 # Represent the binary tree as a tuple of constant size = 3
@@ -70,5 +89,6 @@ tree_tuples = [((1, 3, None), 2, ((None, 3, 4), 5, (6, 7, 8))), ((1, 3, None), 4
 for tree_tuple in tree_tuples:
     tree = build_tree_from_tuple(tree_tuple)
     print_tree(tree)
-    print(traverse_in_order(tree))
-
+    print(inorder_traversal(tree))
+    print(preorder_traversal(tree))
+    print(postorder_traversal(tree))
