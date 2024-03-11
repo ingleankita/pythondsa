@@ -32,8 +32,43 @@ def print_tree(root, level=0, prefix="Root: "):
             print_tree(root.right, level + 1, "R--- ")
 
 
+# TODO: Write a function to perform the inorder traversal of a binary tree.
+"""Inorder traversal:
+1. Traverse left subtree recursively inorder.
+2. Traverse the current node.
+3. Traverse right subtree recursively inorder."""
+
+
+def traverse_in_order(node):  # inorder traversal to list
+    if node is None:
+        return []
+    return (traverse_in_order(node.left) +
+            [node.value] +
+            traverse_in_order(node.right))
+
+
+def traverse_in_order_and_print(node):
+    if node is None:
+        return
+
+    traverse_in_order_and_print(node.left)
+    print(node.value, end=' ')
+    traverse_in_order_and_print(node.right)
+
+
+# TODO: Write a function to perform the preorder traversal of a binary tree.
+"""Preorder traversal:
+1. Traverse the current node.
+2. Traverse the left subtree recursively preorder.
+3. Traverse the right subtree recursively preorder."""
+
+# TODO: Write a function to perform the postorder traversal of a binary tree.
+
+
 # Represent the binary tree as a tuple of constant size = 3
 tree_tuples = [((1, 3, None), 2, ((None, 3, 4), 5, (6, 7, 8))), ((1, 3, None), 4, 6)]
 for tree_tuple in tree_tuples:
     tree = build_tree_from_tuple(tree_tuple)
     print_tree(tree)
+    print(traverse_in_order(tree))
+
