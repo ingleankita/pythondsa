@@ -14,6 +14,7 @@ class HashTable:
         """Create a hast table of given size"""
         self.list = [None] * max_size
 
+    # Time complexity: O(k) where k is size of key string
     def hash_key_and_get_index(self, string_key):
         """algorithm for hashing a key to a list index: convert each char of the string to a number using python's
         built-in ord function, get the hash of the string by summing all these numbers, the sum modulo hash table size is
@@ -23,24 +24,29 @@ class HashTable:
             sum_of_chars += ord(char)
         return sum_of_chars % len(self.list)
 
+    # Time complexity: O(1) excluding the hashing operation
     def insert(self, key, value):
         """Insert a new key-value pair"""
         index = self.hash_key_and_get_index(key)
         self.list[index] = (key, value)
 
+    # Time complexity: O(1) excluding the hashing operation
     def find(self, key):
         """Get the value given a key"""
         return self.list[self.hash_key_and_get_index(key)][1]
 
+    # Time complexity: O(1) excluding the hashing operation
     def update(self, key, value):
         """Change the value associated with the given key"""
         index = self.hash_key_and_get_index(key)
         self.list[index] = (key, value)
 
+    # Time complexity: O(n)
     def list_keys(self):
         """List all keys in the hash table"""
         return [kv[0] for kv in self.list if kv is not None]
 
+    # Time complexity: O(n)
     def show_list(self):
         return [kv for kv in self.list if kv is not None]
 
@@ -67,6 +73,7 @@ class HashTableWithLinearProbing:
             sum_of_chars += ord(char)
         return sum_of_chars % len(self.list)
 
+    # Time complexity: O(n)
     def probe_for_index(self, key):
         """When multiple keys have the same hash, this is referred to as a collision (addressed using Linear Probing)"""
         # Find the nearest empty index or index with matching key
@@ -76,24 +83,29 @@ class HashTableWithLinearProbing:
                 return index_after_probing
             index_after_probing = (index_after_probing + 1) % len(self.list)
 
+    # Time complexity: O(n) for probing
     def insert(self, key, value):
         """Insert a new key-value pair; if key already exists, probing will simply update that position"""
         index = self.probe_for_index(key)
         self.list[index] = (key, value)
 
+    # Time complexity: O(n) for probing
     def find(self, key):
         """Get the value given a key"""
         return self.list[self.probe_for_index(key)][1]
 
+    # Time complexity: O(n) for probing
     def update(self, key, value):
         """Change the value associated with the given key"""
         index = self.probe_for_index(key)
         self.list[index] = (key, value)
 
+    # Time complexity: O(n)
     def list_keys(self):
         """List all keys in the hash table"""
         return [kv[0] for kv in self.list if kv is not None]
 
+    # Time complexity: O(n)
     def show_list(self):
         return [kv for kv in self.list if kv is not None]
 
