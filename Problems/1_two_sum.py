@@ -30,11 +30,23 @@ tests = [
 
 def two_sum_brute_force(nums, target):
     for i in range(len(nums)):
-        for j in range(i+1, len(nums)):
+        for j in range(i + 1, len(nums)):
             if nums[i] + nums[j] == target:
                 return [i, j]
             j += 1
         i += 1
 
 
+def two_sum_using_hashmap(nums, target):
+    """store the hash_map[num] = index, lookup for index of num takes constant time"""
+    hash_map = {}
+    for i in range(len(nums)):
+        # num[i] + looking_for = target; target always > nums[i]
+        looking_for = target - nums[i]
+        if looking_for in hash_map:
+            return [hash_map[looking_for], i]
+        hash_map[nums[i]] = i
+
+
 evaluate_tests(tests, two_sum_brute_force)
+evaluate_tests(tests, two_sum_using_hashmap)
