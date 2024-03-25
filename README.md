@@ -17,3 +17,4 @@ Practice Data Structures and Algorithms in Python.
 
 ### String
 - [Reverse string](https://github.com/ingleankita/pythondsa/blob/main/Problems/reverse_string.py)
+- [Longest Substring Without Repeating Characters](https://github.com/ingleankita/pythondsa/blob/main/Problems/longest_substring_without_repeating_characters.py)
