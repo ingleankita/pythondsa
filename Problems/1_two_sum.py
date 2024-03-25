@@ -41,7 +41,7 @@ def two_sum_using_hashmap(nums, target):
     """store the hash_map[num] = index, lookup for index of num takes constant time"""
     hash_map = {}
     for i in range(len(nums)):
-        # num[i] + looking_for = target; target always > nums[i]
+        # here num[i] + looking_for = target => target always > nums[i]
         looking_for = target - nums[i]
         if looking_for in hash_map:
             return [hash_map[looking_for], i]
