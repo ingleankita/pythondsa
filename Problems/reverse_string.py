@@ -1,12 +1,10 @@
 def reverse_string(s):
-    reversed_string = ""
-    i = len(s) - 1
-    while True:
-        reversed_string += s[i]
-        i = i - 1
-        if i < 0:
-            break
-    return reversed_string
+    reversed_s = ""
+    # range(start, stop, step)
+    # -1 step tells python to traverse the string in reverse
+    for i in range(len(s) - 1, -1, -1):
+        reversed_s += s[i]
+    return reversed_s
 
 
 def reverse_string_v2(s):
